@@ -46,6 +46,27 @@
       dot.addEventListener('click', ()=>{ index = i; update(); });
       dotsContainer.appendChild(dot);
     });
+    // Manejo de teclado (ArrowLeft/ArrowRight/Home/End) para roving tabindex
+    dotsContainer.addEventListener('keydown', (e)=>{
+      const key = e.key;
+      const total = slides.length;
+      let handled = false;
+      if(key === 'ArrowRight'){ index = (index + 1) % total; handled = true; }
+      else if(key === 'ArrowLeft'){ index = (index - 1 + total) % total; handled = true; }
+      else if(key === 'Home'){ index = 0; handled = true; }
+      else if(key === 'End'){ index = total - 1; handled = true; }
+      else if(key === 'Enter' || key === ' '){ // activar
+        const currentDot = dotsContainer.children[index];
+        currentDot && currentDot.click();
+        handled = true;
+      }
+      if(handled){
+        e.preventDefault();
+        update();
+        const activeDot = dotsContainer.children[index];
+        activeDot && activeDot.focus();
+      }
+    });
   }
 
   prevBtn && prevBtn.addEventListener('click', ()=>{ index = (index - 1 + slides.length) % slides.length; update(); });

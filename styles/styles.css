@@ -49,6 +49,8 @@ button { font-family: inherit; }
 .main-header::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(247,242,234,0.6) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0) 100%); pointer-events: none; }
 .hero-content { max-width: 680px; }
 .hero-image { flex: 1; min-height: 220px; background-image: url('https://via.placeholder.com/800x600?text=Foto+Principal'); background-size: cover; background-position: center; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+/* Ajuste al usar <figure> */
+.hero-image img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
 .see-collection-button {
   background: var(--accent);
@@ -108,6 +110,8 @@ button { font-family: inherit; }
 .carousel-dots { display: flex; gap: 8px; justify-content: center; padding-top: 12px; }
 .carousel-dots button { width: 10px; height: 10px; border-radius: 50%; border: none; background: #c5b4a2; cursor: pointer; }
 .carousel-dots button.active { background: var(--accent); }
+/* Estado enfoque accesible para dots */
+.carousel-dots button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* --------- Modal QR --------- */
 .qr-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(16,12,10,0.36); }
@@ -152,6 +156,19 @@ footer { text-align: center; padding: 30px; background: #333; color: #aaa; margi
 /* --------- Mejora accesibilidad/estilos adicionales --------- */
 .carousel-dots button[aria-selected="true"] { background: var(--accent); }
 .price { font-weight: 700; color: var(--accent); margin-top: 8px; }
+.price .currency-symbol { font-weight: 600; margin-right: 4px; }
+
+/* Skip Link (salto al contenido) */
+.skip-link { position: absolute; top: -100px; left: 0; background: #000; color: #fff; padding: 10px 14px; z-index: 2000; text-decoration: none; font-weight: 600; border-radius: 0 0 6px 0; }
+.skip-link:focus { top: 0; }
+
+/* Estilos de enfoque global accesibles */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* Evitar doble outline donde ya se definió específico */
+.see-collection-button:focus-visible { outline: 2px solid var(--btn-secondary); outline-offset: 2px; }
+
+figure.image-pair { margin: 0; }
+figure.image-pair figcaption { font-size: 0.8rem; color: var(--muted); }
 .contact-section { padding: 56px 24px; }
 .contact-inner { max-width: 900px; margin: 0 auto; }
 .contact-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 10px 26px rgba(0,0,0,0.06); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
