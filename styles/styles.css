@@ -99,7 +99,7 @@ button {
 
 /* Ajuste al usar <figure> */
 .hero-image img {
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
   border-radius: 8px;
@@ -176,11 +176,11 @@ button {
 .slide {
   flex: 0 0 100%;
   box-sizing: border-box;
-  padding: 48px clamp(16px, 4vw, 48px);
+  padding: 32px clamp(12px, 3vw, 32px);
   display: grid;
-  grid-template-columns: minmax(280px, 52%) 1fr;
-  gap: clamp(24px, 5vw, 56px);
-  align-items: center;
+  grid-template-columns: minmax(260px, 45%) 1fr;
+  gap: clamp(16px, 3vw, 36px);
+  align-items: start;
   justify-content: center;
 }
 
@@ -189,13 +189,15 @@ button {
   pointer-events: none;
 }
 
-/* Diseño asimétrico */
+/* Diseño simetrico */
+
+/* Contenedor de dos imágenes (principal + detalle) apiladas dentro del área roja */
 .image-pair {
-  flex: 0 0 52%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-rows: auto auto;
   gap: 12px;
+  margin: 0;
 }
 
 .main-img {
@@ -204,15 +206,16 @@ button {
   border-radius: 10px;
   display: block;
   object-fit: cover;
-  transition: transform .45s ease, box-shadow .3s;
+  transition: transform .35s ease, box-shadow .3s;
 }
 
 .detail-thumb {
-  width: 48%;
-  align-self: flex-end;
+  width: 100%;
+  position: static;
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform .35s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform .25s ease;
+  object-fit: cover;
 }
 
 .slide:hover .main-img {
@@ -226,8 +229,8 @@ button {
 
 .product-info {
   flex: 1;
-  padding: 6px 6px 6px 0;
-  transform: translateY(12px);
+  padding: 4px 4px 4px 0;
+  margin-top: 4px;
 }
 
 .product-info h3 {
