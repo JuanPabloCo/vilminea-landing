@@ -1,0 +1,159 @@
+// Carrusel: muestra un solo producto a la vez con accesibilidad
+(()=>{
+  const slidesTrack = document.querySelector('.slides');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const prevBtn = document.querySelector('.carousel-nav.prev');
+  const nextBtn = document.querySelector('.carousel-nav.next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const qrModal = document.getElementById('qr-modal');
+  const qrImage = document.getElementById('qr-image');
+  const qrClose = document.getElementById('qr-close');
+  const statusEl = document.getElementById('carousel-status');
+
+  let index = 0;
+
+  function update(){
+    slidesTrack.style.transform = `translateX(${-index*100}%)`;
+    // Dots estado
+    Array.from(dotsContainer.children).forEach((dot,i)=>{
+      const active = i === index;
+      dot.classList.toggle('active', active);
+      dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      dot.tabIndex = active ? 0 : -1;
+    });
+    // aria-hidden en inactivos
+    slides.forEach((sl,i)=>{
+      sl.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+    });
+    // Anuncio accesible del estado actual
+    if(statusEl){
+      const total = slides.length;
+      const current = index + 1;
+      const name = slides[index]?.dataset?.title || slides[index]?.querySelector('h3')?.innerText || '';
+      statusEl.textContent = `Mostrando ${current} de ${total}${name ? `: ${name}` : ''}`;
+    }
+  }
+
+  function createDots(){
+    slides.forEach((sl,i)=>{
+      if(!sl.id){ sl.id = `slide-${i+1}`; }
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.type = 'button';
+      dot.setAttribute('role','tab');
+      dot.setAttribute('aria-controls', sl.id);
+      dot.setAttribute('aria-label', `Ir a la página ${i+1}`);
+      dot.addEventListener('click', ()=>{ index = i; update(); });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  prevBtn && prevBtn.addEventListener('click', ()=>{ index = (index - 1 + slides.length) % slides.length; update(); });
+  nextBtn && nextBtn.addEventListener('click', ()=>{ index = (index + 1) % slides.length; update(); });
+
+  // Lógica de compra / QR
+  slides.forEach(slide=>{
+    const buy = slide.querySelector('.buy-button');
+    const qr = slide.querySelector('.qr-button');
+    const mpUrl = slide.dataset.mpUrl;
+    const createPref = slide.dataset.createPref === 'true';
+    const title = slide.dataset.title || '';
+    const price = Number(slide.dataset.price) || 0;
+    const currency = slide.dataset.currency || 'ARS';
+    const description = (slide.querySelector('p')||{}).innerText || '';
+    const waProductLink = document.querySelector('.whatsapp-float');
+
+    // Si existe data-mp-url se usa directamente. La lógica de createPreference sólo se mantiene
+    // para compatibilidad futura si se vuelve a activar data-create-pref.
+    async function createPreference(){
+      const res = await fetch('/create-preference', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ title, price, currency, quantity:1, description })
+      });
+      if(!res.ok) throw new Error('Error servidor '+res.status);
+      const data = await res.json();
+      return data.init_point || data.url || data.redirect_url || data.checkout_url || data.payment_url;
+    }
+
+    buy && buy.addEventListener('click', async()=>{
+      try{
+        if(mpUrl){
+          window.open(mpUrl,'_blank');
+          return;
+        }
+        if(createPref){
+          const url = await createPreference();
+          if(!url) return alert('No se recibió URL de pago del servidor.');
+          window.open(url,'_blank');
+          return;
+        }
+        if(!mpUrl){
+          alert('Reemplaza el enlace de Mercado Pago en "data-mp-url".');
+          return;
+        }
+      }catch(err){
+        console.error(err);
+        alert('Error al crear preferencia.');
+      }
+    });
+
+    qr && qr.addEventListener('click', async()=>{
+      try{
+        let link='';
+        if(mpUrl){
+          link = mpUrl;
+        } else if(createPref){
+          link = await createPreference();
+          if(!link) return alert('No se recibió URL de pago del servidor.');
+        } else {
+          alert('Falta data-mp-url para generar el QR.');
+          return;
+        }
+        const encoded = encodeURIComponent(link);
+        qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`;
+        qrModal.classList.add('open');
+        qrModal.setAttribute('aria-hidden','false');
+      }catch(err){
+        console.error(err);
+        alert('Error al generar QR.');
+      }
+    });
+
+    // Ajuste dinámico: si existe botón flotante de WhatsApp, añadir mensaje contextual del producto al abrir.
+    if(waProductLink){
+      const baseHref = waProductLink.getAttribute('href');
+      if(baseHref && baseHref.includes('api.whatsapp.com/send')){
+        const u = new URL(baseHref);
+        const currentText = u.searchParams.get('text') || '';
+        // No sobreescribimos si ya se agregó el título; simple control
+        if(!currentText.includes(title) && title){
+          u.searchParams.set('text', `${currentText}\nConsulta sobre: ${title}`.trim());
+          waProductLink.setAttribute('href', u.toString());
+        }
+      }
+    }
+  });
+
+  qrClose && qrClose.addEventListener('click', ()=>{
+    qrModal.classList.remove('open');
+    qrModal.setAttribute('aria-hidden','true');
+    qrImage.src='';
+  });
+
+  qrModal && qrModal.addEventListener('click', (e)=>{
+    if(e.target === qrModal){
+      qrClose.click();
+    }
+  });
+
+  createDots();
+  update();
+
+  // Scroll al bloque de colección desde el botón del hero
+  const seeBtn = document.querySelector('.see-collection-button');
+  seeBtn && seeBtn.addEventListener('click', ()=>{
+    const section = document.getElementById('coleccion');
+    if(section){ section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+})();

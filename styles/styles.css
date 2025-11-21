@@ -1,0 +1,174 @@
+/* =========================================================
+   Vilminea_byColqui - Hoja de estilos única
+   Paleta, tipografía, layout asimétrico, accesibilidad y UI
+   (Derivado de la versión minificada consolidada)
+========================================================= */
+
+/* --------- Paleta y Variables --------- */
+:root {
+  --bg: #f7f2ea; /* crema suave */
+  --accent: #6B4C3B; /* marrón tierra títulos */
+  --muted: #8f7f6e; /* texto secundario */
+  --mp-green: #1dbf73; /* verde compra */
+  --btn-secondary: #a07b5a; /* borde ghost */
+  --glass: rgba(255,255,255,0.6);
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Montserrat", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: var(--bg);
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* textura sutil SVG generada inline */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g opacity='0.04' fill='%236b4c3b'><circle cx='8' cy='8' r='0.8'/><circle cx='30' cy='18' r='0.6'/><circle cx='46' cy='42' r='0.7'/></g></svg>");
+  background-repeat: repeat;
+  background-size: 120px;
+  background-blend-mode: overlay;
+}
+
+/* --------- Tipografía --------- */
+.title-header, h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+.subtitle-header {
+  font-weight: 300;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+h2 { font-size: 1.6rem; margin: 18px 0 12px; }
+a { color: inherit; }
+button { font-family: inherit; }
+
+/* --------- Hero --------- */
+.main-header { height: 100vh; padding: 64px 54px 72px; display: flex; gap: 48px; align-items: center; box-sizing: border-box; position: relative; }
+.main-header::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(247,242,234,0.6) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0) 100%); pointer-events: none; }
+.hero-content { max-width: 680px; }
+.hero-image { flex: 1; min-height: 220px; background-image: url('https://via.placeholder.com/800x600?text=Foto+Principal'); background-size: cover; background-position: center; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
+.see-collection-button {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 28px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  transition: background .3s ease, transform .2s;
+}
+.see-collection-button:hover { background: #8d654d; transform: translateY(-2px); }
+.see-collection-button:focus-visible { outline: 2px solid var(--btn-secondary); outline-offset: 2px; }
+
+/* --------- Navbar Fija --------- */
+.fix-navbar { position: sticky; top: 0; z-index: 1000; width: 100%; background: #333; padding: 15px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.fix-navbar a { color: #fff; text-decoration: none; padding: 15px 20px; font-weight: 600; }
+.fix-navbar a:hover { background: #555; }
+
+/* --------- Carrusel Principal --------- */
+.carousel-container { position: relative; display: flex; align-items: center; padding: 28px 12px; gap: 12px; }
+.carousel-viewport { flex: 1; overflow: hidden; }
+.slides { display: flex; flex-wrap: nowrap; transition: transform .55s cubic-bezier(.18,.72,.26,1); will-change: transform; }
+.slide { flex: 0 0 100%; box-sizing: border-box; padding: 48px clamp(16px,4vw,48px); display: grid; grid-template-columns: minmax(280px,52%) 1fr; gap: clamp(24px,5vw,56px); align-items: center; justify-content: center; }
+.slide[aria-hidden="true"] { visibility: hidden; pointer-events: none; }
+
+/* Diseño asimétrico */
+.image-pair { flex: 0 0 52%; position: relative; display: flex; flex-direction: column; gap: 12px; }
+.main-img { width: 100%; height: auto; border-radius: 10px; display: block; object-fit: cover; transition: transform .45s ease, box-shadow .3s; }
+.detail-thumb { width: 48%; align-self: flex-end; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: transform .35s ease; }
+.slide:hover .main-img { transform: scale(1.03); }
+.main-img:focus, .detail-thumb:focus { outline: 2px solid var(--btn-secondary); }
+
+.product-info { flex: 1; padding: 6px 6px 6px 0; transform: translateY(12px); }
+.product-info h3 { margin-top: 0; font-size: 1.4rem; }
+.product-info p { color: var(--muted); line-height: 1.5; }
+
+/* --------- Botones Producto --------- */
+.product-actions { display: flex; gap: 10px; margin: 12px 0; }
+.buy-button { background: var(--mp-green); color: #fff; border: 0; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; box-shadow: 0 6px 12px rgba(45,150,90,0.12); transition: transform .15s ease, box-shadow .15s; }
+.buy-button:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(45,150,90,0.18); }
+.buy-button:focus-visible { outline: 2px solid #28a96d; outline-offset: 2px; }
+.qr-button { background: transparent; color: var(--accent); border: 2px solid var(--btn-secondary); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 500; transition: background .15s, color .15s; }
+.qr-button:hover { background: var(--btn-secondary); color: #fff; }
+.qr-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* --------- Meta Info / Pagos --------- */
+.product-meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 0.92rem; align-items: center; margin-top: 8px; }
+.payment-logos { display: flex; gap: 8px; align-items: center; }
+.payment-logos .logo { display: inline-block; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.45); font-weight: 600; font-size: 0.85rem; color: var(--accent); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+
+/* --------- Navegación Carrusel --------- */
+.carousel-nav { background: var(--glass); border: 0; padding: 12px; border-radius: 8px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.06); font-size: 20px; display: flex; align-items: center; justify-content: center; }
+.carousel-dots { display: flex; gap: 8px; justify-content: center; padding-top: 12px; }
+.carousel-dots button { width: 10px; height: 10px; border-radius: 50%; border: none; background: #c5b4a2; cursor: pointer; }
+.carousel-dots button.active { background: var(--accent); }
+
+/* --------- Modal QR --------- */
+.qr-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(16,12,10,0.36); }
+.qr-modal[aria-hidden="false"] { display: flex; }
+.qr-modal-content { background: #fff; padding: 20px; border-radius: 12px; max-width: 360px; text-align: center; box-shadow: 0 18px 40px rgba(0,0,0,0.18); position: relative; }
+.qr-modal-content img { max-width: 260px; height: auto; margin: 12px 0; }
+.qr-close { position: absolute; right: 8px; top: 8px; border: none; background: transparent; font-size: 20px; cursor: pointer; }
+.qr-hint { color: var(--muted); font-size: 0.95rem; margin-top: 12px; }
+
+/* --------- WhatsApp Flotante --------- */
+.whatsapp-float { position: fixed; left: 18px; bottom: 18px; width: 54px; height: 54px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37,211,102,0.18); text-decoration: none; z-index: 1200; transition: transform .12s; }
+.whatsapp-float svg { width: 26px; height: 26px; display: block; }
+.whatsapp-float:hover { transform: translateY(-6px); }
+.whatsapp-float:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* --------- Footer --------- */
+footer { text-align: center; padding: 30px; background: #333; color: #aaa; margin-top: 50px; }
+
+/* --------- Responsive --------- */
+@media (max-width: 900px) {
+  .slide { flex-direction: column; }
+  .image-pair { width: 100%; }
+  .detail-thumb { width: 40%; align-self: flex-start; }
+  .product-info { transform: translateY(0); }
+  .main-header { flex-direction: column; padding: 28px; }
+}
+@media (max-width: 600px) {
+  .main-img { width: 100%; }
+  .whatsapp-float { width: 50px; height: 50px; }
+  .whatsapp-float svg { width: 24px; height: 24px; }
+}
+
+/* --------- Preferencias de usuario --------- */
+@media (prefers-reduced-motion: reduce) {
+  .slide:hover .main-img { transform: none; }
+  .buy-button, .qr-button, .see-collection-button { transition: none; }
+}
+
+/* --------- Utilidades --------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
+
+/* --------- Mejora accesibilidad/estilos adicionales --------- */
+.carousel-dots button[aria-selected="true"] { background: var(--accent); }
+.price { font-weight: 700; color: var(--accent); margin-top: 8px; }
+.contact-section { padding: 56px 24px; }
+.contact-inner { max-width: 900px; margin: 0 auto; }
+.contact-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 10px 26px rgba(0,0,0,0.06); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+.contact-card p { color: var(--muted); margin: 0; }
+.contact-actions a { display: inline-flex; align-items: center; gap: 8px; }
+.contact-actions .wa-inline { background: #25D366; color:#fff; padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 600; }
+@media (max-width: 700px){ .contact-card { grid-template-columns: 1fr; } }
+
+/* --------- Sección About --------- */
+.about-section { padding: 56px 24px; }
+.about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 5vw, 60px); align-items: center; }
+.about-media { min-height: 260px; border-radius: 12px; background-image: url('https://via.placeholder.com/800x600?text=Nuestro+Taller'); background-size: cover; background-position: center; box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
+.about-content p { color: var(--muted); line-height: 1.7; }
+.about-values { margin: 12px 0 18px; padding-left: 18px; color: var(--accent); }
+.about-values li { margin: 6px 0; }
+.about-cta { margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .about-inner { grid-template-columns: 1fr; }
+}

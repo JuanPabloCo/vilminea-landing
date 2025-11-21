@@ -1,0 +1,12 @@
+{
+  "name": "Vilminea_byColqui",
+  "short_name": "Vilminea",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f7f2ea",
+  "theme_color": "#6B4C3B",
+  "description": "Decoración artesanal en fibras naturales: espejos de rafia y yute, colgantes de macramé hechos a mano.",
+  "icons": [
+    {"src": "favicon.png", "sizes": "32x32", "type": "image/png"}
+  ]
+}
