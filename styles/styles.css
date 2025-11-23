@@ -70,39 +70,51 @@ button {
 /* --------- Hero --------- */
 .main-header {
   height: 100vh;
-  padding: 64px 54px 72px;
-  display: flex;
-  gap: 48px;
-  align-items: center;
-  box-sizing: border-box;
   position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.main-header::after {
+.hero-image {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(247, 242, 234, 0.6) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(135deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
   pointer-events: none;
 }
 
 .hero-content {
-  max-width: 680px;
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: clamp(32px, 6vw, 72px);
+  box-sizing: border-box;
+  color: #fff;
 }
 
-.hero-image {
-  flex: 1;
-  min-height: 220px;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-/* Ajuste al usar <figure> */
-.hero-image img {
-  width: 60%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
+.hero-content .title-header,
+.hero-content .subtitle-header {
+  color: #fff;
 }
 
 .see-collection-button {
@@ -151,6 +163,16 @@ button {
 .fix-navbar a:hover {
   background: #555;
 }
+
+#coleccion-heading{
+  padding: 30px 24px 12px;
+  margin-left: 60px;
+}
+.collection-intro{
+  margin-left: 60px;
+  padding: 0 24px;
+}
+
 
 /* --------- Carrusel Principal --------- */
 .carousel-container {
@@ -220,7 +242,8 @@ button {
   object-fit: cover;
 }
 
-.slide:hover .main-img {
+.main-img:hover,
+.detail-thumb:hover {
   transform: scale(1.03);
 }
 
@@ -452,13 +475,175 @@ footer {
   margin-top: 50px;
 }
 
+/* --------- Footer Expandido E-commerce --------- */
+.site-footer {
+  background: #2e2e2e;
+  color: #d5d5d5;
+  padding: 52px 28px 24px;
+  margin-top: 70px;
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: #f1e8e0;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.footer-col {
+  line-height: 1.5;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col li {
+  margin: 6px 0;
+}
+
+.brand-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.brand-tagline {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Quitar pseudo ícono previo para usar SVG reales */
+/* .payment-list li::before eliminado */
+.payment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.payment-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-icon svg {
+  display: block;
+  width: 60px;
+  height: 24px;
+}
+
+.payment-label {
+  font-size: 0.8rem;
+  color: #d5d5d5;
+}
+
+.site-footer .payment-list li {
+  margin: 6px 0;
+}
+
+.shipping-list li::before {
+  content: "📦 ";
+}
+
+.legal-list li::before {
+  content: "⚖️ ";
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  border-radius: 6px;
+}
+
+.social-link:hover .social-label {
+  text-decoration: underline;
+}
+
+.social-label {
+  font-size: 0.8rem;
+}
+
+.footer-contact-list li::before {
+  content: "✉️ ";
+}
+
+.footer-contact-list li:first-child::before {
+  content: "💬 ";
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 18px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 4px 0;
+}
+
+.footer-bottom .disclaimer {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+@media (max-width: 700px) {
+  .site-footer {
+    padding: 44px 20px 20px;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 28px;
+  }
+}
+
 /* --------- Responsive --------- */
 @media (max-width: 900px) {
-  .slide { grid-template-columns: 1fr; padding: 24px 16px; }
-  .image-pair { grid-template-columns: 1fr; gap: 10px; }
-  .detail-thumb { height: auto; }
-  .product-info { margin-top: 12px; }
-  .main-header { flex-direction: column; padding: 28px; }
+  .slide {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+  }
+
+  .image-pair {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .detail-thumb {
+    height: auto;
+  }
+
+  .product-info {
+    margin-top: 12px;
+  }
+
+  .main-header {
+    flex-direction: column;
+    padding: 28px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -619,7 +804,7 @@ figure.image-pair figcaption {
 .about-media {
   min-height: 260px;
   border-radius: 12px;
-  background-image: url('https://via.placeholder.com/800x600?text=Nuestro+Taller');
+  background-clip: url();
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
@@ -646,6 +831,113 @@ figure.image-pair figcaption {
 
 @media (max-width: 900px) {
   .about-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------- Testimonios --------- */
+.testimonials-section {
+  padding: 56px 24px;
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials-intro {
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.testimonials-list {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.testimonial-item {
+  background: #fff;
+  padding: 20px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin: 0;
+}
+
+.testimonial-item blockquote {
+  margin: 0 0 12px;
+  font-style: italic;
+  line-height: 1.5;
+  position: relative;
+}
+
+.testimonial-item blockquote::before {
+  content: "\201C";
+  font-size: 2.6rem;
+  line-height: 1;
+  position: absolute;
+  left: -8px;
+  top: -10px;
+  color: var(--btn-secondary);
+  opacity: .25;
+}
+
+.testimonial-item figcaption {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* --------- Sección Legal / Políticas --------- */
+.legal-section {
+  padding: 56px 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+.legal-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 40px;
+}
+
+.legal-block {
+  background: #fff;
+  padding: 22px 26px;
+  border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.05);
+}
+
+.legal-block h3 {
+  margin-top: 0;
+}
+
+.policy-points {
+  margin: 12px 0 16px;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.policy-points li {
+  margin: 4px 0;
+}
+
+.policy-note {
+  font-size: .85rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 6px 10px;
+  border-left: 3px solid var(--btn-secondary);
+  border-radius: 4px;
+}
+
+.external-link[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: .6;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .legal-inner {
     grid-template-columns: 1fr;
   }
 }
