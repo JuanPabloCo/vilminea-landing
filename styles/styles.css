@@ -673,6 +673,7 @@ footer {
   .see-collection-button {
     transition: none;
   }
+  .fade-in {opacity:1 !important;transform:none !important;transition:none !important;}
 }
 
 /* --------- Utilidades --------- */
@@ -943,3 +944,18 @@ figure.image-pair figcaption {
     grid-template-columns: 1fr;
   }
 }
+
+/* --------- Lifestyle Gallery (Ambientes) --------- */
+.lifestyle-section {padding:56px 24px;background:linear-gradient(180deg,rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.8) 100%);}
+.lifestyle-inner {max-width:1200px;margin:0 auto;}
+.lifestyle-intro {color:var(--muted);margin:0 0 28px;line-height:1.5;}
+.lifestyle-gallery {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;grid-auto-flow:dense;}
+.lifestyle-item {background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.06);margin:0;display:flex;flex-direction:column;}
+.lifestyle-item img {display:block;width:100%;height:auto;object-fit:cover;}
+.lifestyle-item figcaption {padding:10px 14px;font-size:.8rem;color:var(--muted);line-height:1.4;}
+.lifestyle-item--wide {grid-column:span 2;}
+.lifestyle-item--tall {grid-row:span 2;}
+@media (max-width:900px){.lifestyle-item--wide{grid-column:span 1;} .lifestyle-item--tall{grid-row:span 1;}}
+/* Aparición suave */
+.fade-in {opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.is-visible {opacity:1;transform:none;}
