@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Head: metadatos SEO, tipografías y hoja de estilos -->
     <title>Vilminea_byColqui</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Piezas artesanales en fibras naturales: espejos, colgantes y decoración hecha a mano para transformar tu hogar con calidez y estilo sostenible.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title" content="Vilminea_byColqui - Decoración Artesanal">
+    <meta property="og:description" content="Espejos y piezas textiles hechos a mano con fibras naturales. Calidad, calidez y diseño atemporal para tu espacio.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Vilminea_byColqui">
+    <meta property="og:image:alt" content="Piezas artesanales de Vilminea_byColqui">
+    <meta property="og:url" content="https://example.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vilminea_byColqui - Decoración Artesanal">
+    <meta name="twitter:description" content="Espejos y piezas textiles hechos a mano con fibras naturales.">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630?text=Vilminea_byColqui">
     <!-- Fuentes: Serif para títulos, Sans para cuerpo -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <!-- Enlace de salto accesible para usuarios de teclado/lectores -->
+    <a href="#coleccion" class="skip-link">Ir al contenido principal</a>
     
+    <!-- Hero: título principal, mensaje de valor y imagen destacada -->
     <header class="main-header" id="home">
-        <div class="hero-content">
-            <h1 class="title-header">Tu Hogar, Tu Reflejo. Decora con Alma.</h1>
-            <h4 class="subtitle-header">Descubre piezas artesanales únicas, creadas con fibras naturales y la paciencia del trabajo hecho a mano. Transforma tu espacio en un santuario.</h4>
-            <button class="see-collection-button">Ver la Colección</button>
-        </div>
-        <div class="hero-image">
+        <figure class="hero-image">
+            <div class="hero-content">
+                <h1 class="title-header">Tu Hogar, Tu Reflejo. Decora con Alma.</h1>
+                <h4 class="subtitle-header">Descubre piezas artesanales únicas, creadas con fibras naturales y la paciencia del trabajo hecho a mano. Transforma tu espacio en un santuario.</h4>
+                <button class="see-collection-button">Ver la Colección</button>
             </div>
+            <img src="/styles/images/Bandeja_PAZ2.png" srcset="/styles/images/Bandeja_PAZ2.png 800w, /styles/images/Bandeja_PAZ2.png 600w, /styles/images/Bandeja_PAZ2.png 400w" sizes="(max-width: 900px) 100vw, 100vw" alt="" width="800" height="600" aria-hidden="true" loading="lazy">
+        </figure>
     </header>
 
+            <!-- Navbar fija con anclas internas -->
             <nav class="fix-navbar">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
-                <a href="#services">Services</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#politicas">Políticas</a>
                 <a href="#contacto">Contact</a>
             </nav>
 
+    <!-- Main: contiene la sección de la colección (carrusel) -->
     <main>
+        <!-- Colección: carrusel de productos artesanales -->
         <section id="coleccion" aria-labelledby="coleccion-heading" class="collection-section">
             <h2 id="coleccion-heading">Nuestra Colección</h2>
             <p class="collection-intro">Piezas artesanales en fibras naturales, hechas a mano para transformar tus espacios.</p>
@@ -36,15 +58,17 @@
                 <button class="carousel-nav prev" aria-label="Anterior">‹</button>
                 <div class="carousel-viewport" aria-live="polite">
                     <div class="slides">
-                        <article id="prod-espejo-sol-rafia" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Espejo Sol de Rafia" data-price="3500" data-currency="ARS">
-                            <div class="image-pair">
-                                <img class="main-img" src="https://via.placeholder.com/800x600?text=Espejo+Sol+de+Rafia" alt="Espejo Sol de Rafia">
-                                <img class="detail-thumb" loading="lazy" src="https://via.placeholder.com/400x400?text=Detalle+Nudo" alt="Detalle del tejido del espejo de rafia" title="Ver detalle">
-                            </div>
+                        <!-- Slide producto 1: Espejo Sol de Rafia -->
+                        <article id="prod-espejo-girasol" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Espejo Sol de Rafia" data-price="3500" data-currency="ARS">
+                            <figure class="image-pair">
+                                <img class="main-img" src="/styles/images/Espejo_GIRASOL.png" srcset="/styles/images/Espejo_GIRASOL.png 800w, /styles/images/Espejo_GIRASOL.png 600w, /styles/images/Espejo_GIRASOL.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Espejo Girasol" width="800" height="600" loading="lazy">
+                                    <img class="detail-thumb" loading="lazy" src="/styles/images/Espejo_GIRASOL2.png" srcset="/styles/images/Espejo_GIRASOL2.png 400w, /styles/images/Espejo_GIRASOL2.png 300w, /styles/images/Espejo_GIRASOL2.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle tejido" width="400" height="400" title="Ver detalle">
+                                <figcaption>Espejo de yute Girasol – detalle del tejido artesanal.</figcaption>
+                            </figure>
                             <div class="product-info">
-                                <h3>Espejo Sol de Rafia</h3>
+                                <h3>Espejo Girasol</h3>
                                 <p>Tejido a mano nudo por nudo. Una pieza central que irradia luz y calidez en cualquier habitación.</p>
-                                <p class="price"><data value="3500" class="price-value">3500</data> <span class="currency">ARS</span></p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="3500" class="price-value">3.500</data> <span class="currency">ARS</span></p>
                                  <div class="product-actions">
                                     <button class="buy-button" aria-label="Comprar Espejo Sol de Rafia">Comprar</button>
                                     <button class="qr-button" aria-label="Mostrar código QR para Espejo Sol de Rafia">Mostrar QR</button>
@@ -56,18 +80,20 @@
                                 </div>
                             </div>
                         </article>
-                        <article id="prod-espejo-luna-yute" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Espejo Luna de Yute" data-price="4200" data-currency="ARS">
-                            <div class="image-pair">
-                                <img class="main-img" loading="lazy" src="https://via.placeholder.com/800x600?text=Espejo+Luna+de+Yute" alt="Espejo Luna de Yute">
-                                <img class="detail-thumb" loading="lazy" src="https://via.placeholder.com/400x400?text=Detalle+Trenza" alt="Detalle de la trenza de yute" title="Ver detalle">
-                            </div>
+                        <!-- Slide producto 2: Espejo Luna de Yute -->
+                        <article id="prod-espejo-elena" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Espejo Luna de Yute" data-price="4200" data-currency="ARS">
+                            <figure class="image-pair">
+                                <img class="main-img" loading="lazy" src="/styles/images/Espejo_ELENA.png" srcset="/styles/images/Espejo_ELENA.png 800w, /styles/images/Espejo_ELENA.png 600w, /styles/images/Espejo_ELENA.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Espejo Elena" width="800" height="600">
+                                <img class="detail-thumb" loading="lazy" src="/styles/images/Espejo_ELENA2.png" srcset="/styles/images/Espejo_ELENA2.png 400w, /styles/images/Espejo_ELENA2.png 300w, /styles/images/Espejo_ELENA2.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle trenza" width="400" height="400" title="Ver detalle">
+                                <figcaption>Espejo de yute Elena – textura trenzada elegante.</figcaption>
+                            </figure>
                             <div class="product-info">
-                                <h3>Espejo Luna de Yute</h3>
+                                <h3>Espejo de yute Elena</h3>
                                 <p>Diseño sobrio y elegante en yute trenzado que aporta textura y estilo.</p>
-                                <p class="price"><data value="4200" class="price-value">4200</data> <span class="currency">ARS</span></p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="4200" class="price-value">4.200</data> <span class="currency">ARS</span></p>
                                 <div class="product-actions">
-                                    <button class="buy-button" aria-label="Comprar Espejo Luna de Yute">Comprar</button>
-                                    <button class="qr-button" aria-label="Mostrar código QR para Espejo Luna de Yute">Mostrar QR</button>
+                                    <button class="buy-button" aria-label="Comprar Espejo de yute Elena">Comprar</button>
+                                    <button class="qr-button" aria-label="Mostrar código QR para Espejo de yute Elena">Mostrar QR</button>
                                 </div>
                                 <div class="product-meta">
                                     <span class="meta-item">📦 Envío: CABA/Provincia (2–5 días)</span>
@@ -76,18 +102,86 @@
                                 </div>
                             </div>
                         </article>
+                        <!-- Slide producto 3: Colgante de Macramé -->
                         <article id="prod-colgante-macrame" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Colgante de Macramé" data-price="2200" data-currency="ARS">
-                            <div class="image-pair">
-                                <img class="main-img" loading="lazy" src="https://via.placeholder.com/800x600?text=Colgante+Macram%C3%A9" alt="Colgante de Macramé">
-                                <img class="detail-thumb" loading="lazy" src="https://via.placeholder.com/400x400?text=Detalle+Hilo" alt="Detalle del hilado del colgante" title="Ver detalle">
-                            </div>
+                            <figure class="image-pair">
+                                <img class="main-img" loading="lazy" src="/styles/images/Bandeja_CLARITA2.png" srcset="/styles/images/Bandeja_CLARITA2.png 800w, /styles/images/Bandeja_CLARITA2.png 600w, /styles/images/Bandeja_CLARITA2.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Bandeja Clarita" width="800" height="600">
+                                <img class="detail-thumb" loading="lazy" src="/styles/images/Bandeja_CLARITA.png" srcset="/styles/images/Bandeja_CLARITA.png 400w, /styles/images/Bandeja_CLARITA.png 300w, /styles/images/Bandeja_CLARITA.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle bandeja Clarita" width="400" height="400" title="Ver detalle">
+                                <figcaption>Bandeja de yute Clarita – ideal para plantas y pared.</figcaption>
+                            </figure>
                             <div class="product-info">
-                                <h3>Colgante de Macramé</h3>
+                                <h3>Bandeja Clarita</h3>
                                 <p>Ideal para plantas o como detalle decorativo con un toque bohemio.</p>
-                                <p class="price"><data value="2200" class="price-value">2200</data> <span class="currency">ARS</span></p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="2200" class="price-value">2.200</data> <span class="currency">ARS</span></p>
                                 <div class="product-actions">
-                                    <button class="buy-button" aria-label="Comprar Colgante de Macramé">Comprar</button>
-                                    <button class="qr-button" aria-label="Mostrar código QR para Colgante de Macramé">Mostrar QR</button>
+                                    <button class="buy-button" aria-label="Comprar Bandeja Clarita">Comprar</button>
+                                    <button class="qr-button" aria-label="Mostrar código QR para Bandeja Clarita">Mostrar QR</button>
+                                </div>
+                                <div class="product-meta">
+                                    <span class="meta-item">📦 Envío: Nacional (3–10 días)</span>
+                                    <span class="meta-item">💳 Medios de pago: Mercado Pago • Visa • MasterCard</span>
+                                    <span class="meta-item">📏 Medidas: 40cm x 40cm</span>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide producto 4: Bandeja Paz -->
+                        <article id="prod-colgante-macrame" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Colgante de Macramé" data-price="2200" data-currency="ARS">
+                            <figure class="image-pair">
+                                <img class="main-img" loading="lazy" src="/styles/images/Bandeja_PAZ.png" srcset="/styles/images/Bandeja_PAZ.png 800w, /styles/images/Bandeja_PAZ.png 600w, /styles/images/Bandeja_PAZ.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Bandeja Paz" width="800" height="600">
+                                <img class="detail-thumb" loading="lazy" src="/styles/images/Bandeja_PAZ3.png" srcset="/styles/images/Bandeja_PAZ3.png 400w, /styles/images/Bandeja_PAZ3.png 300w, /styles/images/Bandeja_PAZ3.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle bandeja Paz" width="400" height="400" title="Ver detalle">
+                                <figcaption>Bandeja de yute Paz – ideal para plantas y pared.</figcaption>
+                            </figure>
+                            <div class="product-info">
+                                <h3>Bandeja Paz</h3>
+                                <p>Ideal para plantas o como detalle decorativo con un toque bohemio.</p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="2200" class="price-value">2.200</data> <span class="currency">ARS</span></p>
+                                <div class="product-actions">
+                                    <button class="buy-button" aria-label="Comprar Bandeja Paz">Comprar</button>
+                                    <button class="qr-button" aria-label="Mostrar código QR para Bandeja Paz">Mostrar QR</button>
+                                </div>
+                                <div class="product-meta">
+                                    <span class="meta-item">📦 Envío: Nacional (3–10 días)</span>
+                                    <span class="meta-item">💳 Medios de pago: Mercado Pago • Visa • MasterCard</span>
+                                    <span class="meta-item">📏 Medidas: 40cm x 40cm</span>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide producto 5: Colgante de Macramé -->
+                        <article id="prod-colgante-macrame" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Colgante de Macramé" data-price="2200" data-currency="ARS">
+                            <figure class="image-pair">
+                                <img class="main-img" loading="lazy" src="/styles/images/Espejo_FLORENCIA.png" srcset="/styles/images/Espejo_FLORENCIA.png 800w, /styles/images/Espejo_FLORENCIA.png 600w, /styles/images/Espejo_FLORENCIA.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Bandeja Clarita" width="800" height="600">
+                                <img class="detail-thumb" loading="lazy" src="/styles/images/Espejo_FLORENCIA2.png" srcset="/styles/images/Espejo_FLORENCIA2.png 400w, /styles/images/Espejo_FLORENCIA2.png 300w, /styles/images/Espejo_FLORENCIA2.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle bandeja Clarita" width="400" height="400" title="Ver detalle">
+                                <figcaption>Bandeja de yute Clarita – ideal para plantas y pared.</figcaption>
+                            </figure>
+                            <div class="product-info">
+                                <h3>Bandeja Clarita</h3>
+                                <p>Ideal para plantas o como detalle decorativo con un toque bohemio.</p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="2200" class="price-value">2.200</data> <span class="currency">ARS</span></p>
+                                <div class="product-actions">
+                                    <button class="buy-button" aria-label="Comprar Bandeja Clarita">Comprar</button>
+                                    <button class="qr-button" aria-label="Mostrar código QR para Bandeja Clarita">Mostrar QR</button>
+                                </div>
+                                <div class="product-meta">
+                                    <span class="meta-item">📦 Envío: Nacional (3–10 días)</span>
+                                    <span class="meta-item">💳 Medios de pago: Mercado Pago • Visa • MasterCard</span>
+                                    <span class="meta-item">📏 Medidas: 40cm x 40cm</span>
+                                </div>
+                            </div>
+                        </article>
+                                                <!-- Slide producto 5: Pantalla AMELI -->
+                        <article id="prod-colgante-macrame" class="slide" data-mp-url="https://mpago.la/1HL6D8s" data-title="Colgante de Macramé" data-price="2200" data-currency="ARS">
+                            <figure class="image-pair">
+                                <img class="main-img" loading="lazy" src="/styles/images/Pantalla_AMELI.png" srcset="/styles/images/Pantalla_AMELI.png 800w, /styles/images/Pantalla_AMELI.png 600w, /styles/images/Pantalla_AMELI.png 400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Pantalla Ameli" width="800" height="600">
+                                <img class="detail-thumb" loading="lazy" src="/styles/images/Pantalla_AMELI2.png" srcset="/styles/images/Pantalla_AMELI2.png 400w, /styles/images/Pantalla_AMELI2.png 300w, /styles/images/Pantalla_AMELI2.png 200w" sizes="(max-width:900px) 50vw, 20vw" alt="Detalle pantalla Ameli" width="400" height="400" title="Ver detalle">
+                                <figcaption>Pantalla de macramé Ameli – ideal para decoración bohemia.</figcaption>
+                            </figure>
+                            <div class="product-info">
+                                <h3>Pantalla Ameli</h3>
+                                <p>Ideal para plantas o como detalle decorativo con un toque bohemio.</p>
+                                <p class="price"><span class="currency-symbol" aria-hidden="true">$</span> <data value="2200" class="price-value">2.200</data> <span class="currency">ARS</span></p>
+                                <div class="product-actions">
+                                    <button class="buy-button" aria-label="Comprar Pantalla Ameli">Comprar</button>
+                                    <button class="qr-button" aria-label="Mostrar código QR para Pantalla Ameli">Mostrar QR</button>
                                 </div>
                                 <div class="product-meta">
                                     <span class="meta-item">📦 Envío: Nacional (3–10 días)</span>
@@ -101,21 +195,22 @@
                 <button class="carousel-nav next" aria-label="Siguiente">›</button>
                 <div class="carousel-dots" role="tablist" aria-label="Páginas del carrusel"></div>
             </div>
-            <div class="sr-only" aria-live="assertive" id="carousel-status"></div>
+            <div class="sr-only" aria-live="assertive" id="carousel-status"></div><!-- Estado anunciado para lectores de pantalla -->
             <!-- Modal para mostrar el QR -->
-            <div id="qr-modal" class="qr-modal" aria-hidden="true">
+            <div id="qr-modal" class="qr-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
                 <div class="qr-modal-content">
                     <button id="qr-close" class="qr-close" aria-label="Cerrar">✕</button>
-                    <h3>Escanea para pagar</h3>
+                    <h3 id="qr-modal-title">Escanea para pagar</h3>
                     <img id="qr-image" src="" alt="QR de pago">
                     <p class="qr-hint">Escanea este código con tu app de pagos o cámara para completar la compra.</p>
                 </div>
             </div>
         </section>
     </main>
+    <!-- About: información institucional y valores -->
     <section id="about" class="about-section" aria-labelledby="about-heading">
         <div class="about-inner">
-            <div class="about-media" aria-hidden="true"></div>
+            <div class="about-media" aria-hidden="true" ></div>
             <div class="about-content">
                 <h2 id="about-heading">Sobre Nosotros</h2>
                 <p>
@@ -133,6 +228,90 @@
                     <a class="see-collection-button" href="#coleccion">Ver la Colección</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonios: reseñas de clientes (refuerza confianza) -->
+    <section id="testimonios" class="testimonials-section" aria-labelledby="testimonios-heading">
+        <div class="testimonials-inner">
+            <h2 id="testimonios-heading">Testimonios</h2>
+            <p class="testimonials-intro">La experiencia de quienes ya eligieron nuestras piezas.</p>
+            <div class="testimonials-list" role="list">
+                <figure class="testimonial-item" role="group" aria-labelledby="t1-text t1-cite">
+                    <blockquote id="t1-text">“El espejo superó mis expectativas: terminaciones impecables y se nota el trabajo artesanal en cada detalle.”</blockquote>
+                    <figcaption id="t1-cite"><cite>Mariana G.</cite> · Compra verificada</figcaption>
+                </figure>
+                <figure class="testimonial-item" role="group" aria-labelledby="t2-text t2-cite">
+                    <blockquote id="t2-text">“Llegó rapidísimo y muy bien embalado. Aporta una calidez única al living, ya quiero otro.”</blockquote>
+                    <figcaption id="t2-cite"><cite>Lucas P.</cite> · Compra verificada</figcaption>
+                </figure>
+                <figure class="testimonial-item" role="group" aria-labelledby="t3-text t3-cite">
+                    <blockquote id="t3-text">“Excelente atención por WhatsApp y el colgante quedó perfecto con mis plantas.”</blockquote>
+                    <figcaption id="t3-cite"><cite>Sofía R.</cite> · Compra verificada</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <!-- JSON-LD: Organization + reviews agregadas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vilminea_byColqui",
+      "url": "https://example.com/",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "3"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Mariana G."},
+          "reviewBody": "El espejo superó mis expectativas: terminaciones impecables y se nota el trabajo artesanal en cada detalle.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5"}
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Lucas P."},
+          "reviewBody": "Llegó rápido y muy bien embalado. Aporta una calidez única al living.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5"}
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Sofía R."},
+          "reviewBody": "Excelente atención por WhatsApp y el colgante quedó perfecto con mis plantas.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5"}
+        }
+      ]
+    }
+    </script>
+
+    <!-- Políticas: devolución, privacidad, perfil Google Business -->
+    <section id="politicas" class="legal-section" aria-labelledby="politicas-heading">
+        <div class="legal-inner">
+            <h2 id="politicas-heading">Políticas y Transparencia</h2>
+            <article id="politica-devoluciones" class="legal-block" aria-labelledby="devoluciones-heading">
+                <h3 id="devoluciones-heading">Política de Devoluciones</h3>
+                <ul class="policy-points">
+                    <li>Plazo: 7 días corridos desde la recepción.</li>
+                    <li>Estado: El producto debe estar sin uso y con empaque original.</li>
+                    <li>Proceso: Escribinos por WhatsApp indicando número de pedido y motivo.</li>
+                    <li>Costos: El envío de retorno corre por cuenta del comprador salvo defecto.</li>
+                </ul>
+                <p class="policy-note">Si hubiera un defecto de fabricación, cubrimos el cambio completo.</p>
+            </article>
+            <article id="politica-privacidad" class="legal-block" aria-labelledby="privacidad-heading">
+                <h3 id="privacidad-heading">Política de Privacidad</h3>
+                <p>Solo utilizamos tus datos para gestionar compras, coordinación de envíos y atención post-venta. No cedemos información a terceros, salvo requerimientos legales.</p>
+                <p>Datos recopilados: nombre, datos de contacto, dirección de envío y comprobantes de pago. Podés solicitar la eliminación escribiendo a nuestro WhatsApp.</p>
+                <p class="policy-note">Última actualización: Enero 2024</p>
+            </article>
+            <article id="google-business" class="legal-block" aria-labelledby="gb-heading">
+                <h3 id="gb-heading">Perfil Google Business</h3>
+                <p>Muy pronto vas a poder ver fotos de clientes y más reseñas en nuestro perfil público.</p>
+                <p><a class="external-link" href="#" aria-disabled="true">Perfil en construcción</a></p>
+            </article>
         </div>
     </section>
         <script type="application/ld+json">
@@ -202,6 +381,7 @@
         }
         </script>
 
+    <!-- Contacto: CTA directa a WhatsApp -->
     <section id="contacto" class="contact-section" aria-labelledby="contacto-heading">
         <div class="contact-inner">
             <div class="contact-card">
@@ -210,7 +390,7 @@
                     <p>¿Tenés dudas o querés coordinar un pedido a medida? Escribinos por WhatsApp y te respondemos a la brevedad.</p>
                 </div>
                 <div class="contact-actions">
-                    <a class="wa-inline" href="https://api.whatsapp.com/send?phone=5491154860450&text=Hola%20Vilminea_byColqui%2C%20me%20interesa%20la%20colecci%C3%B3n." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+                    <a class="wa-inline" href="https://api.whatsapp.com/send?phone=5491154860450&text=Hola%20Vilminea_byColqui%2C%20me%20interesa%20la%20colecci%C3%B3n.&utm_source=site&utm_medium=whatsapp_inline&utm_campaign=consulta" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
                         <span aria-hidden="true">💬</span>
                         <span>Escribir por WhatsApp</span>
                     </a>
@@ -219,17 +399,149 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Vilminea_byColqui. All rights reserved.</p>
+    <!-- Footer: navegación secundaria, datos de contacto, pagos, envíos y legales -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <h2 class="sr-only">Identidad de la marca</h2>
+                <p class="brand-name">Vilminea_byColqui</p>
+                <p class="brand-tagline">Artesanía en fibras naturales para espacios con alma.</p>
+            </div>
+            <nav class="footer-col footer-nav" aria-label="Enlaces rápidos">
+                <h2 class="sr-only">Navegación</h2>
+                <ul class="footer-links" role="list">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#coleccion">Colección</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#politicas">Políticas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="footer-col footer-contact">
+                <h2 class="sr-only">Contacto</h2>
+                <ul class="footer-contact-list" role="list">
+                    <li>WhatsApp: <a href="https://api.whatsapp.com/send?phone=5491154860450&text=Hola%20Vilminea_byColqui" target="_blank" rel="noopener noreferrer">+54 9 11 5486 0450</a></li>
+                    <li>Email: <a href="mailto:contacto@vilminea.com" rel="noopener noreferrer">contacto@vilminea.com</a></li>
+                    <li>Horario: Lun–Vie 10:00–18:00 (ART)</li>
+                </ul>
+            </div>
+            <div class="footer-col footer-payments">
+                <h2 class="sr-only">Medios de pago</h2>
+                <ul class="payment-list" role="list">
+                    <li>
+                        <span class="payment-icon mp" aria-hidden="true">
+                            <svg viewBox="0 0 72 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="mpGrad" x1="0" y1="0" x2="72" y2="0" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#00AEEF"/>
+                                        <stop offset="100%" stop-color="#0069B5"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="72" height="24" rx="4" fill="url(#mpGrad)"/>
+                                <text x="36" y="16" font-size="10" font-family="Montserrat, Arial" fill="#fff" text-anchor="middle">Mercado Pago</text>
+                            </svg>
+                        </span>
+                        <span class="payment-label">Mercado Pago</span>
+                    </li>
+                    <li>
+                        <span class="payment-icon visa" aria-hidden="true">
+                            <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                                <rect width="60" height="24" rx="4" fill="#1A1F71"/>
+                                <text x="30" y="16" font-size="12" font-family="Montserrat, Arial" fill="#fff" font-weight="600" text-anchor="middle">VISA</text>
+                            </svg>
+                        </span>
+                        <span class="payment-label">Visa</span>
+                    </li>
+                    <li>
+                        <span class="payment-icon mc" aria-hidden="true">
+                            <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                                <rect width="60" height="24" rx="4" fill="#222"/>
+                                <circle cx="26" cy="12" r="8" fill="#EB001B"/>
+                                <circle cx="34" cy="12" r="8" fill="#F79E1B" opacity="0.9"/>
+                            </svg>
+                        </span>
+                        <span class="payment-label">MasterCard</span>
+                    </li>
+                    <li>
+                        <span class="payment-icon bank" aria-hidden="true">
+                            <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                                <rect width="60" height="24" rx="4" fill="#4A4A4A"/>
+                                <path d="M12 16h36M18 16V9m6 7V9m6 7V9m6 7V9" stroke="#ddd" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 9h36l-18-6-18 6Z" fill="#666"/>
+                            </svg>
+                        </span>
+                        <span class="payment-label">Transferencia bancaria</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-shipping">
+                <h2 class="sr-only">Envíos</h2>
+                <ul class="shipping-list" role="list">
+                    <li>CABA y Provincia: 2–5 días</li>
+                    <li>Nacional: 3–10 días</li>
+                    <li>Embalaje reforzado reciclable</li>
+                </ul>
+            </div>
+            <div class="footer-col footer-legal">
+                <h2 class="sr-only">Información legal y redes</h2>
+                <ul class="legal-list" role="list">
+                    <li><a href="#politica-devoluciones">Devoluciones</a></li>
+                    <li><a href="#politica-privacidad">Privacidad</a></li>
+                    <li><a href="#google-business">Google Business</a></li>
+                    <li>
+                        <a class="social-link" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <span class="social-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+                                    <rect width="24" height="24" rx="6" fill="url(#igGrad)"/>
+                                    <defs>
+                                        <linearGradient id="igGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="#F58529"/>
+                                            <stop offset="50%" stop-color="#DD2A7B"/>
+                                            <stop offset="100%" stop-color="#8134AF"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M12 7.5A4.5 4.5 0 1 0 12 16.5A4.5 4.5 0 1 0 12 7.5Z" stroke="#fff" stroke-width="2" fill="none"/>
+                                    <circle cx="17" cy="7" r="1.2" fill="#fff"/>
+                                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="2" fill="none"/>
+                                </svg>
+                            </span>
+                            <span class="social-label">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Vilminea_byColqui. Todos los derechos reservados.</p>
+            <p class="disclaimer">Las fotografías son ilustrativas. Precios sujetos a actualización sin previo aviso.</p>
+        </div>
     </footer>
 
-    <a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=5491154860450&text=Hola%20Vilminea_byColqui%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+    <!-- Botón flotante WhatsApp: acceso persistente a contacto -->
+    <a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=5491154860450&text=Hola%20Vilminea_byColqui%2C%20tengo%20una%20consulta.&utm_source=site&utm_medium=whatsapp_float&utm_campaign=consulta" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.671.149-.198.297-.767.966-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.671-1.612-.921-2.206-.242-.579-.487-.5-.671-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.003a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.897a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.88 11.88 0 0 0 5.732 1.463h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.486-8.413"/>
         </svg>
     </a>
 
-    <script src="scripts/carousel.js"></script>
+        <!-- JSON-LD Organization: identidad y redes -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Vilminea_byColqui",
+            "url": "https://example.com/",
+            "logo": "https://example.com/logo.png",
+            "sameAs": [
+                "https://instagram.com/",
+                "https://pinterest.com/"
+            ]
+        }
+        </script>
+        <!-- Scripts principales: carrusel y analítica -->
+        <script type="module" src="scripts/carousel.js" defer></script>
+        <script type="module" src="scripts/analytics.js" defer></script>
 
     </body>
 </html>

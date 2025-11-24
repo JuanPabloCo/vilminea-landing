@@ -1,5 +1,6 @@
-// Carrusel: muestra un solo producto a la vez con accesibilidad
+// IIFE principal: inicializa carrusel, pagos, QR y analítica
 (()=>{
+  // Referencias DOM esenciales
   const slidesTrack = document.querySelector('.slides');
   const slides = Array.from(document.querySelectorAll('.slide'));
   const prevBtn = document.querySelector('.carousel-nav.prev');
@@ -12,6 +13,7 @@
 
   let index = 0;
 
+  // update(): aplica desplazamiento y estados ARIA del slide activo
   function update(){
     slidesTrack.style.transform = `translateX(${-index*100}%)`;
     // Dots estado
@@ -34,6 +36,7 @@
     }
   }
 
+  // createDots(): genera indicadores de página y gestiona navegación por teclado
   function createDots(){
     slides.forEach((sl,i)=>{
       if(!sl.id){ sl.id = `slide-${i+1}`; }
@@ -45,6 +48,27 @@
       dot.setAttribute('aria-label', `Ir a la página ${i+1}`);
       dot.addEventListener('click', ()=>{ index = i; update(); });
       dotsContainer.appendChild(dot);
+    });
+    // Manejo de teclado (ArrowLeft/ArrowRight/Home/End) para roving tabindex
+    dotsContainer.addEventListener('keydown', (e)=>{
+      const key = e.key;
+      const total = slides.length;
+      let handled = false;
+      if(key === 'ArrowRight'){ index = (index + 1) % total; handled = true; }
+      else if(key === 'ArrowLeft'){ index = (index - 1 + total) % total; handled = true; }
+      else if(key === 'Home'){ index = 0; handled = true; }
+      else if(key === 'End'){ index = total - 1; handled = true; }
+      else if(key === 'Enter' || key === ' '){ // activar
+        const currentDot = dotsContainer.children[index];
+        currentDot && currentDot.click();
+        handled = true;
+      }
+      if(handled){
+        e.preventDefault();
+        update();
+        const activeDot = dotsContainer.children[index];
+        activeDot && activeDot.focus();
+      }
     });
   }
 
@@ -65,6 +89,7 @@
 
     // Si existe data-mp-url se usa directamente. La lógica de createPreference sólo se mantiene
     // para compatibilidad futura si se vuelve a activar data-create-pref.
+    // createPreference(): llamada opcional al backend para generar preferencia MP
     async function createPreference(){
       const res = await fetch('/create-preference', {
         method:'POST',
@@ -76,6 +101,7 @@
       return data.init_point || data.url || data.redirect_url || data.checkout_url || data.payment_url;
     }
 
+    // Evento compra: abre enlace MP directo o crea preferencia
     buy && buy.addEventListener('click', async()=>{
       try{
         if(mpUrl){
@@ -98,6 +124,7 @@
       }
     });
 
+    // Evento QR: genera código y abre modal accesible
     qr && qr.addEventListener('click', async()=>{
       try{
         let link='';
@@ -112,8 +139,7 @@
         }
         const encoded = encodeURIComponent(link);
         qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`;
-        qrModal.classList.add('open');
-        qrModal.setAttribute('aria-hidden','false');
+        openQrModal();
       }catch(err){
         console.error(err);
         alert('Error al generar QR.');
@@ -135,25 +161,85 @@
     }
   });
 
-  qrClose && qrClose.addEventListener('click', ()=>{
+  let lastFocusedElement = null;
+  // getFocusable(): lista de elementos enfocable dentro del modal
+  function getFocusable(container){
+    return Array.from(container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(el=>!el.disabled && el.offsetParent !== null);
+  }
+  // openQrModal(): abre modal y coloca foco inicial
+  function openQrModal(){
+    lastFocusedElement = document.activeElement;
+    qrModal.classList.add('open');
+    qrModal.setAttribute('aria-hidden','false');
+    const focusables = getFocusable(qrModal);
+    (focusables[0]||qrClose).focus();
+  }
+  // closeQrModal(): cierra modal y devuelve foco al elemento previo
+  function closeQrModal(){
     qrModal.classList.remove('open');
     qrModal.setAttribute('aria-hidden','true');
     qrImage.src='';
+    if(lastFocusedElement && typeof lastFocusedElement.focus === 'function'){
+      lastFocusedElement.focus();
+    }
+  }
+  qrClose && qrClose.addEventListener('click', closeQrModal);
+
+  // Keydown modal: Tab cicla foco y Escape cierra
+  qrModal && qrModal.addEventListener('keydown', (e)=>{
+    if(qrModal.getAttribute('aria-hidden') === 'true') return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeQrModal(); return; }
+    if(e.key === 'Tab'){
+      const focusables = getFocusable(qrModal);
+      if(focusables.length === 0) return;
+      const currentIndex = focusables.indexOf(document.activeElement);
+      let nextIndex = currentIndex;
+      if(e.shiftKey){
+        nextIndex = currentIndex <= 0 ? focusables.length - 1 : currentIndex - 1;
+      } else {
+        nextIndex = currentIndex === focusables.length - 1 ? 0 : currentIndex + 1;
+      }
+      e.preventDefault();
+      focusables[nextIndex].focus();
+    }
   });
 
   qrModal && qrModal.addEventListener('click', (e)=>{
     if(e.target === qrModal){
-      qrClose.click();
+      closeQrModal();
     }
   });
 
   createDots();
   update();
 
-  // Scroll al bloque de colección desde el botón del hero
+  // Scroll suave hacia la colección desde CTA del hero
   const seeBtn = document.querySelector('.see-collection-button');
   seeBtn && seeBtn.addEventListener('click', ()=>{
     const section = document.getElementById('coleccion');
     if(section){ section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+
+  // Analítica: push en clic comprar y WhatsApp
+  const dataLayer = window.dataLayer || (window.dataLayer = []);
+  document.querySelectorAll('.buy-button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const parent = btn.closest('.slide');
+      dataLayer.push({
+        event:'buy_click',
+        product: parent?.dataset?.title || '',
+        price: parent?.dataset?.price || '',
+        currency: parent?.dataset?.currency || 'ARS'
+      });
+    });
+  });
+  document.querySelectorAll('a[href*="api.whatsapp.com/send"]').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      dataLayer.push({
+        event:'whatsapp_click',
+        source: a.classList.contains('whatsapp-float') ? 'float' : (a.classList.contains('wa-inline')?'inline':'other')
+      });
+    });
   });
 })();
