@@ -802,9 +802,11 @@ figure.image-pair figcaption {
 }
 
 .about-media {
+  height:400px;
   min-height: 260px;
   border-radius: 12px;
-  background-clip: url();
+  background-image: url('/styles/images/SobreNosotrosImg.png');
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);

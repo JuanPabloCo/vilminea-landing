@@ -146,3 +146,58 @@ Siguientes pasos sugeridos
 
 Licencia
 Este proyecto es para uso del propietario. No incluye credenciales ni enlaces de pago reales.
+
+Deploy / Hosting
+----------------
+Escenario 1: Solo estático (sin backend dinámico)
+- Plataforma sugerida: Netlify, Vercel o GitHub Pages.
+- Archivos a publicar: `index.html`, carpeta `styles/`, `scripts/` (solo los .js que uses), imágenes y `manifest.json` (cuando lo completes).
+- Pasos rápidos (Netlify): arrastrar carpeta raíz del proyecto al dashboard / conectar repo y elegir rama (`feature/alta-prioridad-venta` o `main`).
+- Ruta de imágenes: actualmente usan `/styles/images/...` (prefijo slash). Asegúrate de que se sirva desde raíz; si usas subdirectorio, cambia a `styles/images/...` sin `/` inicial.
+
+Escenario 2: Estático + backend mínimo (cupones / preferencias)
+- Plataforma: Render, Railway, Fly.io o Vercel (como serverless). 
+- Variables de entorno: `MP_ACCESS_TOKEN` (o par cifrado `MP_ACCESS_TOKEN_ENC` + `MP_DECRYPT_KEY`), `COUPONS` (ej: `PROMO10:10,BLACK15:15`).
+- Endpoint principal: `POST /create-preference` con body `{ title, price, currency, quantity, description, couponCode }`.
+- Para servir frontend desde el mismo backend (ya configurado en `server.js`), mantené la estructura y subí todo el repo.
+
+Escenario 3: Frontend en Netlify/Vercel + backend aparte (Render/Railway)
+- Beneficio: despliegues independientes y menor cold start para frontend.
+- Ajusta las llamadas del frontend para apuntar al dominio del backend (`https://api.midominio.com/create-preference`).
+- Configura CORS si dominos separados.
+
+Dominio personalizado
+- No es “demasiado”: mejora confianza, SEO y enlaces compartidos.
+- Proveedores: Namecheap, NIC Argentina (.com.ar), Cloudflare Registrar.
+- Registra dominio y en panel DNS apunta:
+  - Si Netlify: CNAME a `your-site.netlify.app` (o usar registros A brindados por Netlify).
+  - Si Vercel: añade dominio en panel y crea CNAME a `cname.vercel-dns.com`.
+  - Si Render: crea A/AAAA si te dan IP fija o usa CNAME al host asignado.
+- SSL: la mayoría provee certificado automático (Let’s Encrypt) una vez propagado DNS (puede tardar 5–30 min).
+
+Checklist despliegue rápido
+1. Elegir hosting (Netlify si sólo estático; Render si también backend).
+2. Revisar paths de imágenes (quitar `/` inicial si se rompe en producción subpath).
+3. Configurar variables de entorno si usas backend.
+4. Subir rama y probar `/health` (backend) y enlaces de compra.
+5. Agregar dominio y esperar propagación.
+6. Validar lighthouse/performance y accesibilidad en producción.
+
+Mejoras post-despliegue
+- Service Worker para cache (assets + offline básico).
+- Critical CSS inline para mejorar FCP/LCP.
+- Agregar FAQ + Breadcrumb JSON-LD.
+- Implementar monitoreo (Uptime + alertas) si backend.
+- Logs estructurados y rate limiting si escalas.
+
+Comandos útiles (Windows bash)
+```bash
+# Ver estado git y última rama
+git status && git branch
+
+# Empujar rama de trabajo
+git push origin feature/alta-prioridad-venta
+
+# Instalar dependencias backend antes de deploy
+cd server && npm install
+```
