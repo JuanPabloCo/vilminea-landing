@@ -21,7 +21,30 @@
     <!-- Fuentes: Serif para títulos, Sans para cuerpo -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/styles.css">
+        <!-- Critical CSS inline: solo lo necesario para hero + base -->
+        <style id="critical-css">
+            :root {--bg:#f7f2ea;--accent:#6B4C3B;--muted:#8f7f6e;--mp-green:#1dbf73;--btn-secondary:#a07b5a;--glass:rgba(255,255,255,.6);}/* base */
+            html,body{height:100%;}
+            body{margin:0;font-family:"Montserrat",system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#222;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+            h1,h2,h3,.title-header{font-family:"Playfair Display",Georgia,serif;color:var(--accent);margin:0 0 12px;}
+            .subtitle-header{font-weight:300;color:var(--muted);margin:0 0 18px;}
+            .main-header{height:100vh;position:relative;margin:0;padding:0;overflow:hidden;}
+            .hero-image{margin:0;position:relative;width:100%;height:100%;display:flex;align-items:flex-start;justify-content:flex-start;}
+            .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+            .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.55) 100%);pointer-events:none;}
+            .hero-content{position:relative;z-index:2;max-width:760px;padding:clamp(32px,6vw,72px);box-sizing:border-box;color:#fff;}
+            .hero-content .title-header,.hero-content .subtitle-header{color:#fff;}
+            .see-collection-button{background:var(--accent);color:#fff;border:0;padding:14px 28px;font-size:.95rem;font-weight:600;cursor:pointer;border-radius:28px;text-transform:uppercase;letter-spacing:.5px;}
+            .see-collection-button:focus-visible{outline:2px solid var(--btn-secondary);outline-offset:2px;}
+            .fix-navbar{position:sticky;top:0;z-index:1000;width:100%;background:#333;padding:15px 0;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.2);}/* nav base */
+            .fix-navbar a{color:#fff;text-decoration:none;padding:15px 20px;font-weight:600;}
+            .skip-link{position:absolute;top:-100px;left:0;background:#000;color:#fff;padding:10px 14px;z-index:2000;text-decoration:none;font-weight:600;border-radius:0 0 6px 0;}
+            .skip-link:focus{top:0;}
+            a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+        </style>
+        <!-- Full stylesheet deferred (preloaded) -->
+        <link rel="preload" href="styles/styles.css" as="style" onload="this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="styles/styles.css"></noscript>
 </head>
 <body>
     <!-- Enlace de salto accesible para usuarios de teclado/lectores -->
